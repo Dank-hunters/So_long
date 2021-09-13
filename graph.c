@@ -25,7 +25,7 @@ void	somthing_happend(t_info *map)
 	i  = 0;
 	objs = ft_itoa(map->nb_seed);
 	obj = NULL;
-	while(i < 3)
+	while(i < 3 && map->pos_y + i < map->mapy - 1)
 	{
 		if (map->map[map->pos_y + i][map->pos_x] == 'C')
 		{
@@ -98,7 +98,7 @@ void	print_exit(t_info *map)
 			x = new_ternaire(map->pos_x - 17 < 0 , map->pos_x - 17, -1);
 			while (++x < map->mapx && x < map->pos_x + 15)
 			{
-				prx = (X_WIN * 0.5) + 64 * (map->pos_x - x);
+				prx = (X_WIN * 0.5) - 64 * (map->pos_x - x);
 				if (map->map[y][x] == 'E')
 					mlx_put_image_to_window(map->img.mlx, map->img.mlx_win, map->xpm[6].img, prx, pry);
 			}
@@ -137,7 +137,7 @@ void    print_ennemy(t_info *map)
 		x = new_ternaire(map->pos_x - 17 < 0 , map->pos_x - 17, -1);
 		while (++x < map->mapx && x < map->pos_x + 15)
 		{
-			prx = (X_WIN * 0.5) + 64 * (map->pos_x - x);
+			prx = (X_WIN * 0.5) - 64 * (map->pos_x - x);
 			if (map->map[y][x] == 'S')
 				mlx_put_image_to_window(map->img.mlx, map->img.mlx_win, map->xpm[7].img, prx, pry);
 		}
@@ -151,14 +151,20 @@ void	print_map(t_info *map)
 	int	prx;
 	int pry;
 
-	y = new_ternaire(map->pos_y - 15 < 0 , map->pos_y - 15, -1);
-	while (++y < map->mapy && y < map->pos_y + 13)
+	//y = new_ternaire(map->pos_y - 15 < 0 , 0, map->pos_y - 15);
+	y = map->pos_y - 15;
+	if (y < 0)
+		y = 0;
+	while (y >= 0 && y < map->mapy && y < map->pos_y + 13)
 	{
 		pry = (Y_WIN * 0.5) + 64 * (y - map->pos_y);
-		x = new_ternaire(map->pos_x - 17 < 0 , map->pos_x - 17, -1);
-		while (++x < map->mapx && x < map->pos_x + 15)
+		//x = new_ternaire(map->pos_x - 17 < 0 , 0, map->pos_x - 17);
+		x = map->pos_x - 17;
+		if (x < 0)
+			x = 0;
+		while (x >= 0 && x < map->mapx && x < map->pos_x + 15)
 		{
-			prx = (X_WIN * 0.5) + 64 * (map->pos_x - x);
+			prx = (X_WIN * 0.5) - (64 * (map->pos_x - x));
 			if (map->map[y][x] == '1')
 				mlx_put_image_to_window(map->img.mlx, map->img.mlx_win, map->xpm[4].img, prx, pry);
 			else
@@ -167,7 +173,9 @@ void	print_map(t_info *map)
 			}
 			if (map->map[y][x] == 'C')
 				mlx_put_image_to_window(map->img.mlx, map->img.mlx_win, map->xpm[3].img, prx, pry);
+			x++;
 		}
+		y++;
 
 	}
 

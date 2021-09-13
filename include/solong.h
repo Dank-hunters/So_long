@@ -88,7 +88,7 @@ typedef struct s_info
 }				t_info;
 
 
-void refresh(t_info *map);
+void	refresh(t_info *map);
 int 	init_img(t_info *map);
 int 	graph(t_info *map);
 int 	keypress(int key, t_info *map);
@@ -98,7 +98,7 @@ void	file_to_img(t_info *map);
 int		init_text(t_info *map, int i, int errror);
 void    init_struct(t_info *map, char **av);
 int		parse(t_info *map);
-void		print_map(t_info *map);
+void	print_map(t_info *map);
 int		get_next_line(int fd, char **line);
 size_t	ft_strrlen(const char *str);
 char	*ft_strdupp(const char *s1, int leaks);
