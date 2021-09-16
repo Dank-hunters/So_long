@@ -1,4 +1,3 @@
-
 #ifndef SOLONG_H
 # define SOLONG_H
 
@@ -85,6 +84,8 @@ typedef struct s_info
 	int			moov;
 	int			nb_seed;
 	int			possible;
+	int 		time;
+	int 		max;
 }				t_info;
 
 

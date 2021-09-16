@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:35:33 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/12 14:47:32 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/15 16:59:11 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@ void    init_struct(t_info *map, char **av)
 	map->moov = 0;
 	map->nb_seed = 0;
 	map->possible = 0;
+	map->time = 0;
+	map->max = 0;
 }

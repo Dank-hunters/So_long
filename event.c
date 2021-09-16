@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 21:16:52 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/13 17:44:30 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/16 16:14:12 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,22 @@ void    event(t_info *map)
 		//free bails
 		exit (0);
     }
+	if (map->goleft == 1 || map->goright == 1 || map->down == 1 || map->up == 1)
+		map->nb++;
     if (map->goleft == 1 && collision(map, map->pos_x - 1, map->pos_y, 2))
         {
-            map->nb++;
             map->pos_x -= 1;
         }
     if (map->goright == 1  && collision(map, map->pos_x + 1, map->pos_y, 2))
         {
-            map->nb++;
             map->pos_x += 1;
         }
     if (map->down == 1 && collision(map, map->pos_x, map->pos_y + 3, 1))
         {
-            map->nb++;
             map->pos_y += 1;
         }
     if (map->up == 1 && collision(map, map->pos_x, map->pos_y - 1, 1))
         {
-            map->nb++;
             map->pos_y -= 1;
         }
 }

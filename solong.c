@@ -6,12 +6,22 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:32:35 by cguiot            #+#    #+#             */
-/*   Updated: 2021/08/24 20:34:49 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/16 16:14:09 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
+
+void rectif_pos(t_info *map)
+{
+	if (map->map[map->pos_y + 1][map->pos_y] == '1')
+		map->pos_y -= 2;
+	if (map->map[map->pos_y + 2][map->pos_y] == '1')
+		map->pos_y -= 1;
+	if (map->map[map->pos_y + 3][map->pos_y] == '1')
+		map->pos_y -= 0;
+}
 int main(int ac, char **av)
 {
 	t_info map;
@@ -27,6 +37,7 @@ int main(int ac, char **av)
 	}
 	map.sve_x = map.pos_x;
 	map.sve_y = map.pos_y;
+	rectif_pos(&map);
 	if (init_img(&map) == 1)
 	{
 		dprintf(1, "ici");

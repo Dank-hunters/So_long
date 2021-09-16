@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graph.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/15 16:52:39 by cguiot            #+#    #+#             */
+/*   Updated: 2021/09/16 16:14:07 by cguiot           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <solong.h>
 
 int	new_ternaire(int condition, int res1, int res2)
@@ -129,7 +141,9 @@ void    print_ennemy(t_info *map)
 	int y;
 	int prx;
 	int pry;
+	int max;
 
+	max = 0;
 	y = new_ternaire(map->pos_y - 15 < 0 , map->pos_y - 15, -1);
 	while (++y < map->mapy && y < map->pos_y + 13)
 	{
@@ -139,11 +153,46 @@ void    print_ennemy(t_info *map)
 		{
 			prx = (X_WIN * 0.5) - 64 * (map->pos_x - x);
 			if (map->map[y][x] == 'S')
+			{	
 				mlx_put_image_to_window(map->img.mlx, map->img.mlx_win, map->xpm[7].img, prx, pry);
+			}
 		}
 	}
-}
 
+}
+void	ennemy_fuck_me(t_info *map)
+{
+	int y = 0;
+	int x = 0;
+
+	while (y < map->mapy)
+	{
+		x = 0;
+		while (x < map->mapx)
+		{
+			if (map->map[y][x] == 'S'/* && map->time % 3 == 0*/)
+			{
+				if (map->max == 0 && y + 1 < map->mapy && map->map[y + 1][x] != '1')
+				{
+					if (map->map[y + 1][x] == '1')
+						map->max = 1;
+					map->map[y][x] = '0';
+					map->map[y + 1][x] = 'S';
+				}
+				if (map->max == 1)
+				{
+					dprintf(1, "DSHUBD\n");
+					map->map[y][x] = '0';
+					map->map[y - 1][x] = 'S';
+				//	if (map->map[y - 1][x] == '1')
+				//		map->max = 0;
+				}	
+			}	
+			x++;	
+		}
+		y++;
+	}
+}
 void	print_map(t_info *map)
 {
 	int	x;
@@ -151,17 +200,11 @@ void	print_map(t_info *map)
 	int	prx;
 	int pry;
 
-	//y = new_ternaire(map->pos_y - 15 < 0 , 0, map->pos_y - 15);
-	y = map->pos_y - 15;
-	if (y < 0)
-		y = 0;
+	y = new_ternaire(map->pos_y - 15 < 0 , map->pos_y - 15, 0);
 	while (y >= 0 && y < map->mapy && y < map->pos_y + 13)
 	{
 		pry = (Y_WIN * 0.5) + 64 * (y - map->pos_y);
-		//x = new_ternaire(map->pos_x - 17 < 0 , 0, map->pos_x - 17);
-		x = map->pos_x - 17;
-		if (x < 0)
-			x = 0;
+		x = new_ternaire(map->pos_x - 17 < 0 , map->pos_x - 17, 0);
 		while (x >= 0 && x < map->mapx && x < map->pos_x + 15)
 		{
 			prx = (X_WIN * 0.5) - (64 * (map->pos_x - x));
@@ -182,9 +225,12 @@ void	print_map(t_info *map)
 	print_sprite(map);
 	print_ennemy(map);
 }
+
 int creat_img(t_info *map)
 {
+	map->time++;
 	event(map);
+	ennemy_fuck_me(map);
 	if (map->nb_seed <= map->compt_recup)
 		map->possible = 1;
 	refresh(map);
@@ -209,13 +255,12 @@ int init_img(t_info *map)
 	file_to_img(map);
 	if (init_text(map, 0, 0) >= 1)
 		return (1);
-	dprintf(1, "ddd");
 	return (0);
 }
 
+
 int graph(t_info *map)
 {
-
 	mlx_hook(map->img.mlx_win, 2, 1L << 0, keypress, map);
 	mlx_hook(map->img.mlx_win, 3, 1L << 1, keyrelease, map);
 	//	mlx_hook(map->img.mlx_win, 17, 1L << 17, exit_games, map);
