@@ -7,7 +7,10 @@ SRCS        = solong.c \
 			  parsing.c \
 			  utils.c \
 			  get_next_line.c \
-			  get_next_line_utils.c
+			  get_next_line_utils.c \
+			  utils_to_graph.c \
+			  print.c \
+			  utils_to_parse.c
 
 
 OBJS		=	$(SRCS:%.c=%.o)
@@ -23,7 +26,7 @@ FRAMEWORK	 = -framework OpenGL -framework Appkit
 MLX		= dependency/mlx/libmlx.a
 
 
-CFLAGS		=  -g3 -fsanitize=address -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS		=  -Wall -Wextra -Werror -I $(INC_DIR)
 
 CC			= gcc
 
