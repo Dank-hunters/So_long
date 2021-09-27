@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 14:06:41 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/21 14:06:42 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/27 16:11:09 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_map(t_info *map, int x, int y)
 	int	pry;
 
 	y = new_ternaire(map->pos_y - 15 < 0, map->pos_y - 15, 0);
-	while (y >= 0 && y < map->mapy && y < map->pos_y + 13)
+	while (y >= 0 && y <= map->mapy && y < map->pos_y + 13)
 	{
 		pry = (Y_WIN * 0.5) + 64 * (y - map->pos_y);
 		x = new_ternaire(map->pos_x - 17 < 0, map->pos_x - 17, 0);
@@ -50,7 +50,7 @@ void	print_ennemy(t_info *map)
 	int	pry;
 
 	y = new_ternaire(map->pos_y - 15 < 0, map->pos_y - 15, -1);
-	while (++y < map->mapy && y < map->pos_y + 13)
+	while (++y <= map->mapy && y < map->pos_y + 13)
 	{
 		pry = (Y_WIN * 0.5) + 64 * (y - map->pos_y);
 		x = new_ternaire(map->pos_x - 17 < 0, map->pos_x - 17, -1);

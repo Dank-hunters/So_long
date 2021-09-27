@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:35:33 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/21 17:21:02 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/27 17:53:10 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_struct(t_info *map, char **av)
 	map->up = 0;
 	map->nb = 0;
 	map->compt_recup = 0;
-	map->moov = 0;
+	map->moov = 2147483646;
 	map->nb_seed = 0;
 	map->possible = 0;
 	map->time = 0;
@@ -70,7 +70,7 @@ void	freed(t_info *map)
 
 	y = 0;
 	x = 0;
-	while (y < map->mapy)
+	while (y <= map->mapy)
 	{
 		free(map->map[y]);
 		y++;
@@ -84,7 +84,7 @@ void	free_map(t_info *map, int cdt)
 	int	i;
 
 	i = 0;
-	while (map->map[i])
+	while (i < map->mapy)
 	{
 		map->map[i] = free_line(map->map[i]);
 		i++;

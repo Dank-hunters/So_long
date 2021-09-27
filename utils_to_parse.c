@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:11:24 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/21 17:21:03 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/27 17:53:09 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,18 @@ int	error(t_info *map, int i)
 	if (i == 5)
 		ft_putstr("The map MUST BE rectangular");
 	if (i == 6)
-		ft_putstr("Map not close");/*
-	if (i == )
-		ft_putstr("");*/
+		ft_putstr("Wrong caracteres in map");
+	if (i == 8)
+		ft_putstr("Missing caractere");
+	if (i == 9)
+		ft_putstr("Map not close");
 	if (i <= 5)
 		exit(0);
 	else
+	{
 		freed(map);
+		exit(0);
+	}
 	return (1);
 
 }

@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 21:16:52 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/21 17:21:04 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/27 17:45:34 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	somthing_happend(t_info *map)
 int	collision(t_info *map, int x, int y, int m)
 {
 	m = 0;
-	if (x < 0 || y < 0 || x > map->mapx || y > map->mapy - 1)
-		return (1);	
+	if (x < 0 || y < 0 || y - 1 < 0 || x > map->mapx || y > map->mapy)
+		return (0);	
 	if (map->map[y][x] == '1')
 		return (0);
-	else if (y + 1 >= 0 && y + 1 < map->mapy && y + 1 >= 0 && y + 1 < map->mapy)
+	else if (y + 1 >= 0 && y + 1 < map->mapy && y + 1 >= 0 && y + 1 <= map->mapy)
 	{
 		if (map->map[y][x] == '1')
 			return (0);

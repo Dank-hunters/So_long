@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:34:09 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/21 17:20:51 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/27 17:53:07 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	found_pos(t_info *map, int i, int y)
 		y++;
 	}
 //	dprintf(1, "%i et %i\n %i et %i\n", map->pos_x, map->mapx, map->pos_y, map->mapy);;
-	if (map->pos_x >= map->mapx - 1 || map->pos_y >= map->mapy - 1)
+	if (map->pos_x >= map->mapx - 1 || map->pos_y >= map->mapy)
 		return (error(map, 1));
 	dprintf(1, "%i\n", map->nb_seed);
 	y = 0;
@@ -100,6 +100,13 @@ void	get_map_size(t_info *map)
 		free(tmp);
 		map->mapy++;
 	}
+	if ((int)ft_strlen(tmp) != 0)
+	{
+		if ((int)ft_strlen(tmp) != map->mapx)
+			map->error = 1;
+		else 
+			map->mapy++;
+	}
 	free(tmp);
 	close(fd);
 	if (map->error == 1)
@@ -122,6 +129,11 @@ int		get_map(t_info *map)
 	{
 		map->map[i] = ft_strdup(tmp); //protection
 		free(tmp);
+		i++;
+	}
+	if ((int)ft_strlen(tmp) != 0)
+	{
+		map->map[i] = ft_strdup(tmp); //protection
 		i++;
 	}
     map->map[i] = NULL;
@@ -147,7 +159,7 @@ int	ft_ischar(char *str, char c)
 
 int	fill_flood_map(t_info *map, int x, int y)
 {
-	if (x < 0 || x > map->mapx - 1 || y < 0 || y > map->mapy - 1)
+	if (x < 0 || x > map->mapx || y < 0 || y > map->mapy )
 		return (0);
 	if (map->map[y][x] == ' ')
 		return (0);
@@ -167,8 +179,51 @@ int	fill_flood_map(t_info *map, int x, int y)
 int parse_map(t_info *map)
 {
 	if (fill_flood_map(map, map->pos_x, map->pos_y) == 0)
-		return (error(map, 6));
+		return (error(map, 9));
 	return (0);
+}
+
+void check_char(t_info *map)
+{
+	int y;
+	t_sp nb;
+
+	nb.e = 0;
+	nb.c = 0;
+	nb.p = 0;	
+	y = 0;
+	while (y < map->mapy - 1)
+	{
+			if (ft_ischar(map->map[y], 'E') == 1)
+				nb.e = 1;
+			if (ft_ischar(map->map[y], 'P') == 1)
+				nb.p = 1;
+			if (ft_ischar(map->map[y], 'C') == 1)
+				nb.c = 1;
+		y++;
+	}
+	if ((nb.c + nb.p + nb.e) != 3)
+		error(map, 8);
+}
+
+void	check_rectangle(t_info *map)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (y < map->mapy - 1)
+	{
+		x = 0;
+		while (x < map->mapx - 1)
+		{
+			if (ft_ischar("10PCES", map->map[y][x]) != 1)
+				error(map, 6);
+			x++;	
+		}
+		y++;
+	}
+	check_char(map);
 }
 
 int parse(t_info *map)
@@ -182,6 +237,7 @@ int parse(t_info *map)
 		dprintf(1, "%s\n", map->map[i]);
     	i++;
     }
+	check_rectangle(map);
     if (found_pos(map, 0, 0) == 1)
         return(1);
     if (parse_map(map) == 1)

@@ -62,6 +62,13 @@ typedef struct s_data
 	void	*mlx_win;
 }				t_data;
 
+typedef struct s_sp
+{
+	int p;
+	int c;
+	int e;
+}			t_sp;
+
 typedef struct s_info
 {
 	t_text		xpm[9];
