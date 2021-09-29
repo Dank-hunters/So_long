@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 14:09:18 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/21 17:20:59 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 16:18:13 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	print_moov(t_info *map)
 {
 	char	*moov;
 
+	if (map->moov >= 200000)
+		exit_games(map);
 	moov = ft_itoa(map->moov);
 	mlx_string_put(map->img.mlx, map->img.mlx_win,
 		   0, 150, 0xAAAAAA, "You do :");

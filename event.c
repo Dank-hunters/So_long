@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 21:16:52 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/27 17:45:34 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 17:48:34 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ int	collision(t_info *map, int x, int y, int m)
 {
 	m = 0;
 	if (x < 0 || y < 0 || y - 1 < 0 || x > map->mapx || y > map->mapy)
-		return (0);	
+		return (0);
 	if (map->map[y][x] == '1')
 		return (0);
-	else if (y + 1 >= 0 && y + 1 < map->mapy && y + 1 >= 0 && y + 1 <= map->mapy)
+	else if (y + 1 >= 0 && y + 1 < map->mapy && y + 1 >= 0
+		&& y + 1 <= map->mapy)
 	{
 		if (map->map[y][x] == '1')
 			return (0);
@@ -54,7 +55,6 @@ int	collision(t_info *map, int x, int y, int m)
 
 int	keypress(int key, t_info *map)
 {
-	map->moov++;
 	if (key == EXIT_WIN)
 		map->exit = 1;
 	if (key == KEY_LEFT)
@@ -70,6 +70,8 @@ int	keypress(int key, t_info *map)
 
 int	keyrelease(int key, t_info *map)
 {
+	map->moov++;
+	dprintf(1, "%i ", map->moov);
 	if (key == EXIT_WIN)
 		map->exit = 0;
 	if (key == KEY_LEFT)
@@ -87,12 +89,14 @@ void	event(t_info *map)
 {
 	if (map->exit == 1 || (((map->map[map->pos_y][map->pos_x] == 'E'
 				|| map->map[map->pos_y + 1][map->pos_x] == 'E')
-			&& map->possible == 1) || map->map[map->pos_y][map->pos_x] == 'S'
+		&& map->possible == 1) || map->map[map->pos_y][map->pos_x] == 'S'
 			|| map->map[map->pos_y + 1][map->pos_x] == 'S'
 			|| map->exit == 1))
 		exit_games(map);
 	if (map->goleft == 1 || map->goright == 1 || map->down == 1 || map->up == 1)
+	{
 		map->nb++;
+	}
 	if (map->goleft == 1 && collision(map, map->pos_x - 1, map->pos_y, 2))
 		map->pos_x -= 1;
 	if (map->goright == 1 && collision(map, map->pos_x + 1, map->pos_y, 2))

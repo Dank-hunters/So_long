@@ -10,7 +10,8 @@ SRCS        = solong.c \
 			  get_next_line_utils.c \
 			  utils_to_graph.c \
 			  print.c \
-			  utils_to_parse.c
+			  utils_to_parse.c \
+			  check_map.c
 
 
 OBJS		=	$(SRCS:%.c=%.o)
@@ -21,7 +22,7 @@ INC			= $(INC_DIR)/solong.h
 
 LIBFT		= dependency/libft/libft.a
 
-FRAMEWORK	 = -framework OpenGL -framework Appkit
+FRAMEWORK	 = -fsanitize=address -g3 -framework OpenGL -framework Appkit
 
 MLX		= dependency/mlx/libmlx.a
 

@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:35:33 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/27 17:53:10 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 15:52:17 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	seed_hitbox(t_info *map)
 	int	i;
 
 	i = 0;
-	while (i < 3 && map->pos_y + i < map->mapy - 1)
+	while (i < 2 && map->pos_y + i < map->mapy - 1)
 	{
 		if (map->map[map->pos_y + i][map->pos_x] == 'C')
 		{
@@ -41,7 +41,7 @@ void	init_struct(t_info *map, char **av)
 	map->up = 0;
 	map->nb = 0;
 	map->compt_recup = 0;
-	map->moov = 2147483646;
+	map->moov = 0;
 	map->nb_seed = 0;
 	map->possible = 0;
 	map->time = 0;
@@ -61,38 +61,4 @@ int	exit_games(t_info *map)
 {
 	free_map(map, 1);
 	exit (0);
-}
-
-void	freed(t_info *map)
-{
-	int y;
-	int x;
-
-	y = 0;
-	x = 0;
-	while (y <= map->mapy)
-	{
-		free(map->map[y]);
-		y++;
-	}
-	free(map->map);
-
-}
-
-void	free_map(t_info *map, int cdt)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->mapy)
-	{
-		map->map[i] = free_line(map->map[i]);
-		i++;
-	}
-	free(map->map);
-	if (cdt == 1)
-	{
-		mlx_destroy_image(map->img.mlx, map->img.img);
-		mlx_destroy_window(map->img.mlx, map->img.mlx_win);
-	}
 }

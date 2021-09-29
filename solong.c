@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:32:35 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/21 15:00:37 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/29 17:48:31 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_filename(char *str)
 
 void	rectif_pos(t_info *map)
 {
-	if(map->map[map->pos_y + 1][map->pos_x] == '1')
+	if (map->map[map->pos_y + 1][map->pos_x] == '1')
 		map->pos_y -= 1;
 	if (map->map[map->pos_y + 2][map->pos_x] == '1')
 		map->pos_y -= 0;
@@ -40,13 +40,15 @@ int	main(int ac, char **av)
 {
 	t_info	map;
 
+	if (ac != 2)
+	{
+		ft_putstr("usage : \"./so_long [your map].ber\" \n");
+		exit (0);
+	}
 	check_filename(av[1]);
 	init_struct(&map, av);
-	if (ac != 2)
-		ft_putstr("usage : \"./so_long [your map].ber\" \n");
 	if (parse(&map) == 1)
-		exit(0);
-		//	exit_games(&map);
+		error(&map, 101);
 	map.sve_x = map.pos_x;
 	map.sve_y = map.pos_y;
 	rectif_pos(&map);
