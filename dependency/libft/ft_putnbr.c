@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 14:21:16 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/30 17:19:40 by cguiot           ###   ########lyon.fr   */
+/*   Created: 2021/09/30 17:17:37 by cguiot            #+#    #+#             */
+/*   Updated: 2021/09/30 17:23:42 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void ft_putnbr(int n)
 {
 	int	i;
 
 	i = 0;
 	if (n == -2147483648)
 	{
-		write(fd, "-2147483648", 11);
+		write(1, "-2147483648", 11);
 		return ;
 	}
 	else
@@ -27,12 +27,12 @@ void	ft_putnbr_fd(int n, int fd)
 		if (n < 0)
 		{
 			n = n * -1;
-			write(fd, "-", 1);
+			write(1, "-", 1);
 		}
 		i = n % 10 + 48;
 		if (n >= 10)
-			ft_putnbr_fd((n / 10), fd);
-		write(fd, &i, 1);
+			ft_putnbr(n / 10);
+		write(1, &i, 1);
 	}
 	return ;
 }

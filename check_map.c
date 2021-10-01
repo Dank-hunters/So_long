@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:18:42 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/28 18:21:47 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/01 18:55:00 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	found_pos(t_info *map, int i, int y)
 	int	x;
 
 	x = 0;
-	while (y < map->mapy || map->map[y] != NULL)
+	while (y < map->mapy)
 	{
 		while (x++ < map->mapx)
 		{

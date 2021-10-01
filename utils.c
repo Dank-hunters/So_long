@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:35:33 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/29 15:52:17 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/01 18:51:50 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void	*free_line(char *str)
 	return (str);
 }
 
-int	exit_games(t_info *map)
+int	exit_games(t_info *map, int cdt)
 {
+	if (cdt == 1)
+		ft_putstr("Error\ntoo much moovs");
 	free_map(map, 1);
 	exit (0);
 }

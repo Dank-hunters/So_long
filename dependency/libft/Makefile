@@ -46,6 +46,7 @@ SRCS		= ./ft_atoi.c\
 			  ./ft_tolower.c\
 			  ./ft_toupper.c\
 			  ./ft_putstr.c\
+			  ./ft_putnbr.c
 
 INC			= libft.h
 

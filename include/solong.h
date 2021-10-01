@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:58:56 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/29 15:59:15 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/01 18:42:05 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int				ft_ischar(char *str, char c);
 int				fill_flood_map(t_info *map, int x, int y);
 void			freed(t_info *map);
 int				error(t_info *map, int i);
+int				error2(int i);
 void			*free_line(char *str);
 void			seed_hitbox(t_info *map);
 void			refresh(t_info *map);
@@ -125,7 +126,7 @@ void			somthing_happend(t_info *map);
 void			ennemy_fuck_me(t_info *map);
 unsigned int	*get_pixel_loc(t_info *map, int x, int y);
 void			print_ennemy(t_info *map);
-int				exit_games(t_info *map);
+int				exit_games(t_info *map, int cdt);
 void			print_sprite(t_info *map);
 void			print_exit(t_info *map);
 void			print_moov(t_info *map);

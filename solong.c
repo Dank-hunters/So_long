@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:32:35 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/29 17:48:31 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/30 17:58:25 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_filename(char *str)
 	if (str[i - 1] != 'r' || str[i - 2] != 'e' \
 			|| str[i - 3] != 'b' || str[i - 4] != '.')
 	{
-		ft_putstr("-Wrong map extention");
+		ft_putstr("Error\nWrong map extention");
 		exit (0);
 	}
 	return (0);
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_putstr("usage : \"./so_long [your map].ber\" \n");
+		ft_putstr("Error\nusage : \"./so_long [your map].ber\" \n");
 		exit (0);
 	}
 	check_filename(av[1]);
@@ -53,8 +53,8 @@ int	main(int ac, char **av)
 	map.sve_y = map.pos_y;
 	rectif_pos(&map);
 	if (init_img(&map) == 1)
-		exit_games(&map);
+		exit_games(&map, 0);
 	if (graph(&map) == 1)
-		exit_games(&map);
+		exit_games(&map, 0);
 	return (0);
 }

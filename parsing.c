@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:34:09 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/29 17:48:29 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/01 18:54:43 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ void	get_map_size(t_info *map, int fd, char *tmp)
 	fd = open(map->filename, O_RDONLY);
 	if (fd < 0)
 		error(map, 60);
-	if (get_next_line(fd, &tmp) == 1)
+	if (get_next_line(fd, &tmp) == -1)
+		error2(45);
+	else
 		map->mapx = (int)ft_strlen(tmp);
 	free(tmp);
 	while (get_next_line(fd, &tmp) == 1 && ++map->mapy)
 	{
+		if ((int)ft_strlen(tmp) == 0)
+			dprintf(1, "ta grand mere la grosse pute a frange qui mande du pain a tout lles repas avec du beurre ");
 		if ((int)ft_strlen(tmp) != map->mapx)
 			map->error = 1;
 		free(tmp);
@@ -48,6 +52,8 @@ int	get_map(t_info *map, int i, int fd, char *tmp)
 	while (get_next_line(fd, &tmp) == 1)
 	{
 		map->map[i] = ft_strdup(tmp);
+		if ((int)ft_strlen(tmp) == 0)
+			dprintf(1, "ta grand mere");
 		if (map->map[i] == NULL)
 			map->error = 1;
 		free(tmp);
@@ -60,7 +66,6 @@ int	get_map(t_info *map, int i, int fd, char *tmp)
 			map->error = 1;
 		i++;
 	}
-	map->map[i] = NULL;
 	free(tmp);
 	close(fd);
 	return (1);
@@ -97,8 +102,10 @@ int	parse(t_info *map)
 	get_map(map, 0, 0, 0);
 	if (map->error == 1)
 		error(map, 5);
-	while (map->map[i])
+	while (i < map->mapy)
 	{
+		if (ft_strlen(map->map[i]) == 0)
+			dprintf(1, "ta grand mere");
 		dprintf(1, "%s\n", map->map[i]);
 		i++;
 	}

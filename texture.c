@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 19:21:14 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/28 17:44:43 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/30 17:58:23 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	init_text(t_info *map, int i, int errror)
 		{
 			while (--i >= 0)
 				mlx_destroy_image(map->img.mlx, map->xpm[i].img);
-			exit_games(map);
+			exit_games(map, 0);
 		}
 		else
 			map->xpm[i].addr = (int *)mlx_get_data_addr(map->xpm[i].img,

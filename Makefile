@@ -22,12 +22,12 @@ INC			= $(INC_DIR)/solong.h
 
 LIBFT		= dependency/libft/libft.a
 
-FRAMEWORK	 = -fsanitize=address -g3 -framework OpenGL -framework Appkit
+FRAMEWORK	 = -framework OpenGL -framework Appkit
 
 MLX		= dependency/mlx/libmlx.a
 
 
-CFLAGS		=  -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS		= -Wall -Wextra -Werror -I $(INC_DIR)
 
 CC			= gcc
 

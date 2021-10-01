@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 21:16:52 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/29 17:48:34 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/09/30 17:58:34 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	keypress(int key, t_info *map)
 int	keyrelease(int key, t_info *map)
 {
 	map->moov++;
-	dprintf(1, "%i ", map->moov);
+	ft_putnbr(map->moov);
 	if (key == EXIT_WIN)
 		map->exit = 0;
 	if (key == KEY_LEFT)
@@ -92,7 +92,7 @@ void	event(t_info *map)
 		&& map->possible == 1) || map->map[map->pos_y][map->pos_x] == 'S'
 			|| map->map[map->pos_y + 1][map->pos_x] == 'S'
 			|| map->exit == 1))
-		exit_games(map);
+		exit_games(map, 0);
 	if (map->goleft == 1 || map->goright == 1 || map->down == 1 || map->up == 1)
 	{
 		map->nb++;
