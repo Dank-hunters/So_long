@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 14:09:18 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/30 17:58:22 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/04 17:10:39 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	refresh(t_info *map)
 	{
 		while (x < X_WIN)
 		{
-			if (x < X_WIN && y < Y_WIN)
+			if (x < X_WIN - 1 && y < Y_WIN - 1)
 				*get_pixel_loc(map, x, y) = 0x012540;
 			x++;
 		}

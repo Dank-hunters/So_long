@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:11:24 by cguiot            #+#    #+#             */
-/*   Updated: 2021/10/01 18:54:45 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/04 16:24:55 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,24 @@ int	error(t_info *map, int i)
 		ft_putstr("Map not close");
 	if (i == 42)
 		ft_putstr("Need Map to continue");
-	if (i == 45)
-		ft_putstr("Can't read map");
 	if (i == 60)
 		ft_putstr("Wrong file descriptor");
 	if (i > 5 && i < 30)
 		freed(map);
 	exit(0);
 	return (1);
+}
+
+int	errors(t_info *map, int i)
+{
+	ft_putstr("Error\n");
+	if (i == 45)
+		ft_putstr("Can't read map");
+	if (i == 101)
+		ft_putstr("Not a valid map");
+	(void)map;
+	exit(0);
+	return (0);
 }
 
 void	freed(t_info *map)

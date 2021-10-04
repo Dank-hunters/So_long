@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:32:35 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/30 17:58:25 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/04 16:21:13 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	check_filename(av[1]);
 	init_struct(&map, av);
 	if (parse(&map) == 1)
-		error(&map, 101);
+		errors(&map, 101);
 	map.sve_x = map.pos_x;
 	map.sve_y = map.pos_y;
 	rectif_pos(&map);

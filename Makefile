@@ -27,7 +27,7 @@ FRAMEWORK	 = -framework OpenGL -framework Appkit
 MLX		= dependency/mlx/libmlx.a
 
 
-CFLAGS		= -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS		= -fsanitize=address -g3 -Wall -Wextra -Werror -I $(INC_DIR)
 
 CC			= gcc
 

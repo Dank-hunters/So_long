@@ -46,7 +46,9 @@ static char *dbf3b67b3e5b414b89a30119d82698e3HtNbcK6KG2sA8ZCO[] = {
 "f c #00D900",
 "g c #00DC00",
 "h c #00DE00",
+"1 c #FFFFFF",
 /* pixels */
+"1111111111111111111111111111111111111111111111111111111111111111",
 "=ppppit+-=>,sfgfsu>177357322tyyppaaaaapwrq:$52-s6tw4p4->$,,8ewq8",
 ":pppiu>2>-5dffgfff74098008847ytpe0etyy0;3; -;=ay4u2>*=>3,@*+1-<>",
 "=ppip8O1,9ddffgfdd,99880w09798wt4tuiq71;tr75rew62y31-2>w8<*$1&55",
@@ -111,4 +113,5 @@ static char *dbf3b67b3e5b414b89a30119d82698e3HtNbcK6KG2sA8ZCO[] = {
 "yue6pip3yuyre1;*yyy38twuu6900qipprtyuipwututpiu39errewq2ryuyuyuu",
 "ue6iipp49894%+%:*238yu9uu5werwuaayeiipp9uuu4iir:=84974@1eyuyuyuy",
 "w84ppppO&><%>4pt6,ot33-23*wtytyppaapaaa8iiw,tr56<=&=2&<&>7eyyuyt"
+"1111111111111111111111111111111111111111111111111111111111111111",
 };

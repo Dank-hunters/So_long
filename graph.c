@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:52:39 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/30 15:56:11 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/04 17:13:07 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int	creat_img(t_info *map)
 int	init_img(t_info *map)
 {
 	map->img.mlx = mlx_init();
-	map->img.mlx_win = mlx_new_window(map->img.mlx, 1920,
-			1080, "So_long");
+	map->img.mlx_win = mlx_new_window(map->img.mlx, X_WIN,
+			Y_WIN, "So_long");
 	if (map->img.mlx_win == NULL)
 		return (1);
-	map->img.img = mlx_new_image(map->img.mlx, 1920, 1080);
+	map->img.img = mlx_new_image(map->img.mlx, X_WIN, Y_WIN);
 	if (map->img.img == NULL)
 		return (1);
 	map->img.addr = (int *)mlx_get_data_addr(map->img.img, &map->img.bpp,

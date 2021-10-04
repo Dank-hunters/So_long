@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:58:56 by cguiot            #+#    #+#             */
-/*   Updated: 2021/10/01 18:42:05 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/04 18:27:12 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # define WALL "textures/wall(1).xpm"
 # define SEED "textures/mega_seed.xpm"
 # define MORTY "textures/classic_morty(1).xpm"
-# define GRASS "textures/grass(1).xpm"
+# define GRASS "textures/grass.xpm"
 # define NEWMORTY "textures/ouch_morty.xpm"
 # define MORTYW "textures/walking_morty(1).xpm"
 # define PORTAL "textures/portal3.xpm"
 # define NYMBUS "textures/trash_rick.xpm"
 # define ULOOSE "textures/ULOOSE.xpm"
 
-# define X_WIN 1920
-# define Y_WIN 1080
+# define X_WIN 2560
+# define Y_WIN 1440
 
 # define KEY_DOWN 1
 # define KEY_UP 13
@@ -104,7 +104,7 @@ int				ft_ischar(char *str, char c);
 int				fill_flood_map(t_info *map, int x, int y);
 void			freed(t_info *map);
 int				error(t_info *map, int i);
-int				error2(int i);
+int				errors(t_info *map, int i);
 void			*free_line(char *str);
 void			seed_hitbox(t_info *map);
 void			refresh(t_info *map);
