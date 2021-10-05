@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:12:10 by cguiot            #+#    #+#             */
-/*   Updated: 2020/11/26 18:51:28 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:41:01 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	*ft_calloc(size_t ne, size_t size)
 {
-	void *res;
+	void	*res;
 
-	if (!(res = malloc(ne * size)))
+	res = malloc(ne * size);
+	if (!(res))
 		return (0);
 	ft_bzero(res, ne * size);
 	return (res);

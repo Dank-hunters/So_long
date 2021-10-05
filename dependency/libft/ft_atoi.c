@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 13:51:14 by cguiot            #+#    #+#             */
-/*   Updated: 2020/12/17 14:16:11 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:39:53 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check(int tmp, long int nb, long int pn)
 	return (1);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long int	nb;
 	int			pn;

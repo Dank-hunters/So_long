@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 14:19:58 by cguiot            #+#    #+#             */
-/*   Updated: 2020/12/17 14:20:04 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:39:27 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*nvl_list;
-	t_list	*nvl_content;
+	t_list	*list;
+	t_list	*new;
+	t_list	*plist;
 
-	nvl_content = NULL;
-	nvl_list = NULL;
+	list = NULL;
+	plist = lst;
 	while (lst)
 	{
-		if (!(nvl_content = ft_lstnew(f(lst->content))))
+		new = ft_lstnew((*f)(lst->content));
+		if (!new)
 		{
-			ft_lstclear(&nvl_list, del);
-			return (NULL);
+			ft_lstclear(&plist, (*del));
+			return (0);
 		}
-		ft_lstadd_back(&nvl_list, nvl_content);
+		ft_lstadd_back(&list, new);
 		lst = lst->next;
 	}
-	return (nvl_list);
+	return (list);
 }

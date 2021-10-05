@@ -37,16 +37,15 @@ SRCS		= ./ft_atoi.c\
 			  ./ft_strlcat.c\
 			  ./ft_strlcpy.c\
 			  ./ft_strlen.c\
-			  ./ft_strmapi.c\
 			  ./ft_strncmp.c\
 			  ./ft_strnstr.c\
 			  ./ft_strrchr.c\
 			  ./ft_strtrim.c\
-			  ./ft_substr.c\
 			  ./ft_tolower.c\
 			  ./ft_toupper.c\
 			  ./ft_putstr.c\
-			  ./ft_putnbr.c
+			  ./ft_putnbr.c\
+			  ./new_malloc.c
 
 INC			= libft.h
 

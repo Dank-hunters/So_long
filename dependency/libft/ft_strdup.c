@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:51:27 by cguiot            #+#    #+#             */
-/*   Updated: 2020/12/17 14:22:16 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 16:40:20 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strdup(const char *src)
 
 	u = 0;
 	i = ft_strlen(src);
-	if (!(dest = malloc(sizeof(char) * i + 1)))
+	dest = malloc(sizeof(char) * i + 1);
+	if (!(dest))
 		return (0);
 	while (i > u)
 	{

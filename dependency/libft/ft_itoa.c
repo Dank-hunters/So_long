@@ -6,63 +6,37 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 14:16:35 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/20 14:51:33 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:37:48 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	size(long int nb)
+char	*ft_itoa(long long n)
 {
-	int		si;
+	int		len;
+	int		neg;
+	long	nbr;
+	char	*res;
 
-	si = 0;
-	if (nb < 0)
+	len = 1;
+	neg = 0;
+	if (n < 0)
+		neg = 1;
+	if (n < 0)
+		n = n * -1;
+	nbr = n;
+	while (nbr >= 10 && ++len)
+		nbr /= 10;
+	if (new_malloc((void *)&res, sizeof(char), len + neg + 1) == 0)
+		return (NULL);
+	if (neg == 1)
+		res[0] = '-';
+	res[len + neg--] = '\0';
+	while (len != 0)
 	{
-		nb = nb * -1;
-		si++;
+		res[len-- + neg] = n % 10 + '0';
+		n /= 10;
 	}
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		si++;
-	}
-	return (si);
-}
-
-static char	*nbzero(void)
-{
-	char	*str;
-
-	if (!(str = malloc(sizeof(char) * 2)))
-		return (0);
-	str[0] = 48;
-	str[1] = 0;
-	return (str);
-}
-
-char		*ft_itoa(int n)
-{
-	char		*str;
-	int			i;
-	long int	nb;
-
-	nb = n;
-	i = size(n);
-	if (nb == 0)
-		return (nbzero());
-	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
-		return (0);
-	str[i--] = 0;
-	if (nb < 0)
-	{
-		str[0] = '-';
-		nb = nb * -1;
-	}
-	while (nb > 0)
-	{
-		str[i--] = 48 + (nb % 10);
-		nb = nb / 10;
-	}
-	return (str);
+	return (res);
 }

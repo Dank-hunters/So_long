@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:14:08 by cguiot            #+#    #+#             */
-/*   Updated: 2020/11/26 15:51:39 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:34:05 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	if (!((d) || (s)))
 		return (0);
 	if (d < s)
-		while (n > 0)
+	{
+		while (n-- > 0)
 		{
 			d[i] = s[i];
 			i++;
-			n--;
 		}
+	}
 	else
-		while (n >= 1)
-		{
+	{		
+		while (n-- >= 1)
 			d[n - 1] = s[n - 1];
-			n--;
-		}
+	}
 	return (dest);
 }

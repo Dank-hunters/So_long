@@ -5,103 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 14:21:37 by cguiot            #+#    #+#             */
-/*   Updated: 2020/12/17 14:21:38 by cguiot           ###   ########lyon.fr   */
+/*   Created: 2021/10/05 17:27:59 by cguiot            #+#    #+#             */
+/*   Updated: 2021/10/05 17:28:30 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char			*ft_malloc(char const *s, char c)
+static int	count_word(char *str, char c)
 {
-	char	*dest;
-	int		u;
+	int		i;
+	int		find;
+	int		count;
 
-	u = 0;
-	while (s[u] && (s[u] != c))
-		u++;
-	if (!(dest = malloc(sizeof(char) * (u + 1))))
-		return (0);
-	if (!(s))
-		return (0);
-	ft_memccpy(dest, s, (int)c, u);
-	dest[u] = 0;
-	return (dest);
-}
-
-static int			ft_check(char const *s, char c)
-{
-	int	i;
-	int	u;
-
-	u = 0;
 	i = 0;
-	while (s[i])
+	count = 0;
+	if (!str)
+		return (0);
+	while (str[i])
 	{
-		while (s[i] == c)
+		find = 0;
+		while ((str[i] == c) && str[i])
+			i++;
+		while (str[i] != c && str[i])
 		{
 			i++;
+			find = 1;
 		}
-		if (s[i])
-			u++;
-		while (s[i] && (s[i] != c))
-			i++;
+		count = count + find;
 	}
-	return (u);
+	return (count);
 }
 
-static const char	*ft_nextword(char const *s, char c)
+static int	get_word_length(char *str, char c, int i)
 {
-	while ((*s == c) && (*s))
-		s++;
-	return (s);
-}
+	int		len;
 
-char				**ft_put_in(char const *s, char **dest, char c, int y)
-{
-	int	i2;
-	int	i;
-
-	i = 0;
-	i2 = 0;
-	while (i < y)
+	len = 0;
+	while (str[i] && str[i] != c)
 	{
-		s = ft_nextword(s, c);
-		if (!(dest[i] = ft_malloc(s, c)))
-		{
-			while (dest[i2])
-				free(dest[i2++]);
-			if (dest)
-				free(dest);
-			return (0);
-		}
-		while ((*s != c) && (*s))
-			s++;
 		i++;
+		len++;
 	}
-	return (dest);
+	return (len);
 }
 
-char				**ft_split(char const *s, char c)
+static char	**ft_free(int i, char **res)
 {
-	int		y;
-	char	**dest;
-
-	y = 0;
-	if (s == 0)
-		return (0);
-	if (!*s)
+	while (i != 0)
 	{
-		if (!(dest = malloc(sizeof(char *) * 1)))
-			return (0);
-		dest[y] = NULL;
-		return (dest);
+		free(res[i]);
+		res[i] = NULL;
+		i--;
 	}
-	y = ft_check(s, c);
-	if (!(dest = malloc(sizeof(char *) * (y + 1))))
+	res = NULL;
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		word;
+	int		i;
+	int		j;
+	int		l;
+	char	**res;
+
+	j = 0;
+	l = 0;
+	word = count_word((char *)s, c);
+	if (!s || new_malloc((void *)&res, sizeof(char *), word + 1) == 0)
 		return (0);
-	if (ft_put_in(s, dest, c, y) == 0)
-		return (0);
-	dest[y] = 0;
-	return (dest);
+	while (l < word)
+	{
+		i = 0;
+		while (s[j] == c)
+			j++;
+		if (new_malloc((void *)&res[l], sizeof(char),
+				(get_word_length((char *)s, c, j) + 1)) == 0)
+			return (ft_free(l, res));
+		while (s[j] != c && s[j])
+			res[l][i++] = s[j++];
+		res[l++][i] = '\0';
+	}
+	res[l] = NULL;
+	return (res);
 }

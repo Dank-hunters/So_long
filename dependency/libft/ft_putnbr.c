@@ -6,13 +6,13 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:17:37 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/30 17:23:42 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:32:50 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putnbr(int n)
+void	ft_putnbr(int n)
 {
 	int	i;
 

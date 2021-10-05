@@ -6,9 +6,11 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:32:12 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/08 14:48:28 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:25:57 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	new_ternaire(int condition, int res1, int res2)
 {

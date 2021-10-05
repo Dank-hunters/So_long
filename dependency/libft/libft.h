@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:40:26 by cguiot            #+#    #+#             */
-/*   Updated: 2021/09/30 17:20:12 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/05 17:42:59 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 # include <string.h>
 # include <stddef.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}					t_list;
+}				t_list;
 
+int					new_malloc(void **dst, int type, int len);
 int					new_ternaire(int condition, int res1, int res2);
-void 				ft_putchar(char c);
+void				ft_putchar(char c);
 void				ft_putstr(char *str);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, int n);
@@ -36,7 +37,7 @@ int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long long n);
 void				ft_lstadd_back(t_list **alst, t_list *nw);
 void				ft_lstadd_front(t_list **alst, t_list *nw);
 void				ft_lstclear(t_list **lst, void (*del)(void*));
@@ -44,7 +45,7 @@ void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-								void (*del)(void *));
+						void (*del)(void *));
 t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
