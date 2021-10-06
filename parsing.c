@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:34:09 by cguiot            #+#    #+#             */
-/*   Updated: 2021/10/04 17:30:49 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/06 17:25:01 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,6 @@ int	parse(t_info *map)
 	get_map(map, 0, 0, 0);
 	if (map->error == 1)
 		error(map, 5);
-	while (i <= map->mapy)
-	{
-		if (ft_strlen(map->map[i]) == 0)
-			dprintf(1, "ta grand mere");
-		dprintf(1, "%s\n", map->map[i]);
-		i++;
-	}
 	check_rectangle(map);
 	if (found_pos(map, 0, 0) == 1)
 		return (1);

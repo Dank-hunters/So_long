@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:32:35 by cguiot            #+#    #+#             */
-/*   Updated: 2021/10/04 16:21:13 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/06 17:24:33 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 	map.sve_y = map.pos_y;
 	rectif_pos(&map);
 	if (init_img(&map) == 1)
-		exit_games(&map, 0);
+		exit_games(&map, 159);
 	if (graph(&map) == 1)
 		exit_games(&map, 0);
 	return (0);

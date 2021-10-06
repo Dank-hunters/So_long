@@ -6,7 +6,7 @@
 /*   By: cguiot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:52:39 by cguiot            #+#    #+#             */
-/*   Updated: 2021/10/04 17:13:07 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/06 17:24:32 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	init_img(t_info *map)
 		return (1);
 	file_to_img(map);
 	if (init_text(map, 0, 0) >= 1)
-		return (1);
+		exit_games(map, 159);
 	return (0);
 }
 

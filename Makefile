@@ -27,11 +27,11 @@ FRAMEWORK	 = -framework OpenGL -framework Appkit
 MLX		= dependency/mlx/libmlx.a
 
 
-CFLAGS		= -fsanitize=address -g3 -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS		= -g3 -Wall -Wextra -Werror -I $(INC_DIR)
 
 CC			= gcc
 
-all:        $(NAME)
+all:        lib $(NAME)
 
 %.o: %.c $(INC)
 	$(CC) $(CFLAGS) -c $< -o $@ 
@@ -40,22 +40,19 @@ all:        $(NAME)
 $(NAME) : 	$(MLX) $(OBJS) $(LIBFT)
 			$(CC) $(CFLAGS) $(FRAMEWORK) $(OBJS) $(MLX) $(LIBFT) -o $(NAME)
 
-$(MLX) : 
-			$(MAKE) -C dependency/mlx
-
-$(LIBFT):
-			$(MAKE) -C dependency/libft
-
+lib:		
+			make -C dependency/libft
+			make -C dependency/mlx
 
 clean:
 			rm -f $(OBJS)
 			$(MAKE)	-C dependency/libft clean
 			$(MAKE)	-C dependency/mlx clean
 
-fclean:        clean
-	$(RM) $(NAME)
+fclean:		clean
+			rm -f $(NAME)
 
 re:            fclean all
 
-.PHONY:       all clean fclean re
+.PHONY:       all clean fclean re lib
 

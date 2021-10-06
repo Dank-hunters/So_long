@@ -6,7 +6,7 @@
 /*   By: cguiot <cguiot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:35:33 by cguiot            #+#    #+#             */
-/*   Updated: 2021/10/01 18:51:50 by cguiot           ###   ########lyon.fr   */
+/*   Updated: 2021/10/06 17:26:10 by cguiot           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	exit_games(t_info *map, int cdt)
 {
 	if (cdt == 1)
 		ft_putstr("Error\ntoo much moovs");
+	if (cdt > 150)
+		ft_putstr("Error\nXPM got a probleme");
 	free_map(map, 1);
 	exit (0);
 }
